@@ -2,11 +2,8 @@ import random
 
 count = 0
 
-def game_over():
-    print("Game Over")
-
 class Bola:
-    def __init__(self, canvas, Barra, color):
+    def __init__(self, canvas, Barra, color, game_over_func):
         self.canvas = canvas
         self.Barra = Barra
         self.id = canvas.create_oval(0, 0, 15, 15, fill=color)
@@ -19,6 +16,7 @@ class Bola:
         self.y = -3
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
+        self.game_over_func = game_over_func
 
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
@@ -43,13 +41,11 @@ class Bola:
                 self.y = -3
                 global count
                 count += 1
-
-                #score()
+                # score()
 
         if pos[3] <= self.canvas_height:
             self.canvas.after(10, self.draw)
         else:
-            game_over()
-
+            self.game_over_func()
             global lost
             lost = True

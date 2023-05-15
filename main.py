@@ -5,9 +5,6 @@ from PIL import Image, ImageTk
 from barra import *
 from bola import *
 
-Bola = Bola
-Barra = Barra
-
 def set_level(event):
     global level, length
     level = int(level_entry.get())
@@ -20,7 +17,7 @@ def set_level(event):
 def init_game():
     global Barra, Bola, score_now, game
     Barra = Barra(canvas, length, "olive")
-    Bola = Bola(canvas, Barra, "white")
+    Bola = Bola(canvas, Barra, "white", game_over)
 
     score_now = canvas.create_text(370, 20, text="Você acertou " + str(count) + "x", fill="lime", font=("Arial", 20))
     game = canvas.create_text(400, 300, text=" ", fill="white", font=("Arial", 40))
@@ -42,8 +39,8 @@ def start_game(event=None):
 def score():
     canvas.itemconfig(score_now, text="Você acertou " + str(count) + "x")
 
-#def game_over():
-#    canvas.itemconfig(game, text="Game over!")
+def game_over():
+    canvas.itemconfig(game, text="Game over!")
 
 root = Tk()
 root.title("Ping Pong")
