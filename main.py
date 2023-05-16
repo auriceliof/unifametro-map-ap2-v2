@@ -1,10 +1,13 @@
 from tkinter import *
 import time
 from PIL import Image, ImageTk
-
+#############################################
 from barra import *
 from bola import *
-
+#############################################
+Bola = Bola
+Barra = Barra
+#############################################
 def set_level(event):
     global level, length
     level = int(level_entry.get())
@@ -13,11 +16,11 @@ def set_level(event):
     level_entry.destroy()
     submit_button.destroy()
     init_game()
-
+#############################################
 def init_game():
-    global Barra, Bola, score_now, game
+    global Barra, Bola, score_now, game, count, lost
     Barra = Barra(canvas, length, "olive")
-    Bola = Bola(canvas, Barra, "white", game_over)
+    Bola = Bola(canvas, Barra, "white", game_over, score)
 
     score_now = canvas.create_text(370, 20, text="Você acertou " + str(count) + "x", fill="lime", font=("Arial", 20))
     game = canvas.create_text(400, 300, text=" ", fill="white", font=("Arial", 40))
@@ -25,7 +28,7 @@ def init_game():
     canvas.bind_all("<Button-1>", start_game)
 
     start_game()
-
+#############################################
 def start_game(event=None):
     global lost, count
     lost = False
@@ -35,18 +38,21 @@ def start_game(event=None):
     time.sleep(1)
     Barra.draw()
     Bola.draw()
-
+#############################################
 def score():
-    canvas.itemconfig(score_now, text="Você acertou " + str(count) + "x")
-
+    global count
+    count += 1
+    canvas.itemconfig(score_now, text="Você acertou " + str(count - 1) + "x")
+#############################################
 def game_over():
     canvas.itemconfig(game, text="Game over!")
+
+#############################################
 
 root = Tk()
 root.title("Ping Pong")
 root.resizable(0, 0)
 root.wm_attributes("-topmost", 1)
-#root.iconbitmap('gameico.ico')
 
 canvas = Canvas(root, width=800, height=600, bd=0, highlightthickness=0)
 canvas.pack()

@@ -1,9 +1,9 @@
 import random
-
+#############################################
 count = 0
-
+#############################################
 class Bola:
-    def __init__(self, canvas, Barra, color, game_over_func):
+    def __init__(self, canvas, Barra, color, game_over_func, score):
         self.canvas = canvas
         self.Barra = Barra
         self.id = canvas.create_oval(0, 0, 15, 15, fill=color)
@@ -17,6 +17,7 @@ class Bola:
         self.canvas_height = self.canvas.winfo_height()
         self.canvas_width = self.canvas.winfo_width()
         self.game_over_func = game_over_func
+        self.score = score
 
     def draw(self):
         self.canvas.move(self.id, self.x, self.y)
@@ -40,8 +41,9 @@ class Bola:
             if pos[3] >= self.Barra_pos[1] and pos[3] <= self.Barra_pos[3]:
                 self.y = -3
                 global count
-                count += 1
-                # score()
+                #count += 1
+                self.score()  # Chama a função score() para atualizar a pontuação
+                #print(count)
 
         if pos[3] <= self.canvas_height:
             self.canvas.after(10, self.draw)

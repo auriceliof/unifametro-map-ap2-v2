@@ -1,4 +1,5 @@
 lost = False
+#############################################
 class Barra:
     def __init__(self, canvas, length, color):
         self.canvas = canvas
