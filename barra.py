@@ -1,11 +1,13 @@
 lost = False
+height_bar=15
+color='red'
 #############################################
 class Barra:
-    def __init__(self, canvas, length, color):
+    def __init__(self, canvas, length):
         self.canvas = canvas
         self.length = length
-        self.id = canvas.create_rectangle(0, 0, length, 10, fill=color)
-        self.canvas.move(self.id, 200, 400)
+        self.id = canvas.create_rectangle(0, 0, length, height_bar, fill=color)
+        self.canvas.move(self.id, 200, 450)
         self.x = 0
         self.canvas_width = self.canvas.winfo_width()
         self.canvas.bind_all("<KeyPress-Left>", self.move_left)

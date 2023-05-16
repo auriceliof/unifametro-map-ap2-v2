@@ -1,12 +1,13 @@
 import random
 #############################################
 count = 0
+color='blue'
 #############################################
 class Bola:
-    def __init__(self, canvas, Barra, color, game_over_func, score):
+    def __init__(self, canvas, Barra, game_over_func, score):
         self.canvas = canvas
         self.Barra = Barra
-        self.id = canvas.create_oval(0, 0, 15, 15, fill=color)
+        self.id = canvas.create_oval(0, 0, 20, 20, fill=color)
         self.canvas.move(self.id, 245, 200)
 
         starts_x = [-3, -2, -1, 1, 2, 3]

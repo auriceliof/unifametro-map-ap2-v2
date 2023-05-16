@@ -19,10 +19,10 @@ def set_level(event):
 #############################################
 def init_game():
     global Barra, Bola, score_now, game, count, lost
-    Barra = Barra(canvas, length, "olive")
-    Bola = Bola(canvas, Barra, "white", game_over, score)
+    Barra = Barra(canvas, length)
+    Bola = Bola(canvas, Barra, game_over, score)
 
-    score_now = canvas.create_text(370, 20, text="Você acertou " + str(count) + "x", fill="lime", font=("Arial", 20))
+    score_now = canvas.create_text(370, 20, text="Você acertou " + str(count) + "x", fill="white", font=("Arial", 20))
     game = canvas.create_text(400, 300, text=" ", fill="white", font=("Arial", 40))
 
     canvas.bind_all("<Button-1>", start_game)
@@ -45,7 +45,7 @@ def score():
     canvas.itemconfig(score_now, text="Você acertou " + str(count - 1) + "x")
 #############################################
 def game_over():
-    canvas.itemconfig(game, text="Game over!")
+    canvas.itemconfig(game, text="Game over!", fill='green', font=("Arial", 70, "bold"))
 
 #############################################
 
