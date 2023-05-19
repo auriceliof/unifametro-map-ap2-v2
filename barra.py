@@ -1,7 +1,10 @@
 # EFEITOS NA BARRA ##########################
 
-color='red'
-height=15
+bar_color='red'
+bar_border=7
+bar_b_color='green'
+bar_height=10
+bar_distance=450
 
 #############################################
 lost = False
@@ -10,8 +13,8 @@ class Barra:
     def __init__(self, canvas, length):
         self.canvas = canvas
         self.length = length
-        self.id = canvas.create_rectangle(0, 0, length, height, fill=color)
-        self.canvas.move(self.id, 200, 450)
+        self.id = canvas.create_rectangle(0, 0, length, bar_height, fill=bar_color, width=bar_border, outline=bar_b_color)
+        self.canvas.move(self.id, 200, bar_distance)
         self.x = 0
         self.canvas_width = self.canvas.winfo_width()
         self.canvas.bind_all("<KeyPress-Left>", self.move_left)

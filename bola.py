@@ -1,9 +1,9 @@
 import random
 # EFEITOS DA BOLA ###########################
 
-color='blue'
-height=15
-width=15
+ball_color='red'
+ball_border=7
+ball_b_color='blue'
 
 #############################################
 
@@ -12,7 +12,7 @@ class Bola:
     def __init__(self, canvas, Barra, game_over_func, score):
         self.canvas = canvas
         self.Barra = Barra
-        self.id = canvas.create_oval(0, 0, width, height, fill=color)
+        self.id = canvas.create_oval(0, 0, 15, 15, fill=ball_color, width=ball_border, outline=ball_b_color)
         self.canvas.move(self.id, 245, 200)
 
         starts_x = [-3, -2, -1, 1, 2, 3]
@@ -47,9 +47,7 @@ class Bola:
             if pos[3] >= self.Barra_pos[1] and pos[3] <= self.Barra_pos[3]:
                 self.y = -3
                 global count
-                #count += 1
-                self.score()  # Chama a função score() para atualizar a pontuação
-                #print(count)
+                self.score()
 
         if pos[3] <= self.canvas_height:
             self.canvas.after(10, self.draw)
