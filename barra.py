@@ -1,12 +1,16 @@
-lost = False
-height_bar=15
+# EFEITOS NA BARRA ##########################
+
 color='red'
+height=15
+
 #############################################
+lost = False
+
 class Barra:
     def __init__(self, canvas, length):
         self.canvas = canvas
         self.length = length
-        self.id = canvas.create_rectangle(0, 0, length, height_bar, fill=color)
+        self.id = canvas.create_rectangle(0, 0, length, height, fill=color)
         self.canvas.move(self.id, 200, 450)
         self.x = 0
         self.canvas_width = self.canvas.winfo_width()
